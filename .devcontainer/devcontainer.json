@@ -9,6 +9,23 @@
 		"args": { "VARIANT": "ubuntu-22.04" }
 	},
 
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			//"settings": {},
+			//"devPort": {},
+			// Specify which VS Code extensions to install (List of IDs)
+			"extensions": [
+				"ms-vscode.powershell",
+				"ms-dotnettools.csharp",
+				"hashicorp.terraform",
+				"esbenp.prettier-vscode",
+				"tfsec.tfsec"
+				]
+			}
+		},
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
