@@ -1,6 +1,6 @@
 # GitHub Codespaces Lab
 
-This repository is dedicated as a reference point for articles published on my blog series: 
+This repository is dedicated as a reference point for articles published on my blog series:
 
 - [GitHub Codespaces Pro Tips](https://dev.to/pwd9000/series/19195).  
 
