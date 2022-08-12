@@ -1,5 +1,5 @@
-ARG RUNNER_VERSION
-ARG VARIANT
+ARG RUNNER_VERSION="2.295.0"
+ARG VARIANT="ubuntu-22.04"
 
 # base image
 FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
@@ -22,8 +22,8 @@ RUN apt-get install -y --no-install-recommends \
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/vscode && mkdir actions-runner && cd actions-runner \
-    && curl -O -L https://github.com/actions/runner/releases/download/v2.295.0/actions-runner-linux-x64-2.295.0.tar.gz \
-    && tar xzvf ./actions-runner-linux-x64-2.295.0.tar.gz
+    && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+    && tar xzvf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
 # install some additional dependencies
 RUN chown -R vscode ~vscode && /home/vscode/actions-runner/bin/installdependencies.sh
