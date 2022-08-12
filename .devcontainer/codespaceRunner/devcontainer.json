@@ -40,17 +40,9 @@
 	"remoteUser": "vscode",
 	"features": {
 		"terraform": "latest",
-		"git": "latest",
 		"git-lfs": "latest",
 		"github-cli": "latest",
 		"azure-cli": "latest",
-		"powershell": "7.1",
-		"curl": "latest",
-		"nodejs": "latest",
-		"wget": "latest",
-		"unzip": "latest",
-		"jq": "latest",
-		"build-essential": "latest",
-		"pip": "latest"
+		"powershell": "7.1"
 	}
 }

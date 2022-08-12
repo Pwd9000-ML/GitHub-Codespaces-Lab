@@ -1,4 +1,5 @@
-ARG RUNNER_VERSION, VARIANT
+ARG RUNNER_VERSION
+ARG VARIANT
 
 # base image
 FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
@@ -15,8 +16,9 @@ LABEL RunnerVersion=${RUNNER_VERSION}
 # update the base packages + add a non-sudo user
 RUN apt-get update -y && apt-get upgrade -y && useradd -m docker
 
-# install the packages and dependencies along with jq so we can parse JSON (add additional packages as necessary)
-RUN apt-get install -y --no-install-recommends
+# [Optional] Uncomment this section to install additional OS packages.
+RUN apt-get install -y --no-install-recommends \
+    curl nodejs wget unzip vim git jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
