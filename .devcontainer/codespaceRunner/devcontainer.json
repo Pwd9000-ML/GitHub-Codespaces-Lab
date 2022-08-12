@@ -6,11 +6,7 @@
 		"dockerfile": "Dockerfile",
 		// Update 'VARIANT' to pick an Ubuntu version: jammy / ubuntu-22.04, focal / ubuntu-20.04, bionic /ubuntu-18.04
 		// Update 'RUNNER_VERSION' with prffered GitHub runner version (https://github.com/actions/runner/releases)
-		// Use ubuntu-22.04 or ubuntu-18.04 on local arm64/Apple Silicon.
-		"args": { 
-			"VARIANT": "ubuntu-22.04",
-			"RUNNER_VERSION": "2.295.0"
-		 }
+		"args": { "VARIANT": "ubuntu-22.04", "RUNNER_VERSION": "2.295.0" }
 	},
 
 	// Configure tool-specific properties.
