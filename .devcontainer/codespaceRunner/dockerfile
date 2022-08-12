@@ -1,8 +1,9 @@
+ARG RUNNER_VERSION, VARIANT
+
 # base image
 FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 
 #input GitHub runner version argument
-ARG RUNNER_VERSION
 ENV DEBIAN_FRONTEND=noninteractive
 
 LABEL Author="Marcel L"
