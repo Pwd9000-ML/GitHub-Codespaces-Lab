@@ -2,7 +2,7 @@
 FROM ubuntu:22.04
 
 #input GitHub runner version argument
-ARG RUNNER_VERSION
+ARG RUNNER_VERSION="2.292.0"
 ENV DEBIAN_FRONTEND=noninteractive
 
 LABEL Author="Marcel L"
@@ -12,9 +12,9 @@ LABEL BaseImage="ubuntu:22.04"
 LABEL RunnerVersion=${RUNNER_VERSION}
 
 # update the base packages + add a non-sudo user
-RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get update -y && apt-get upgrade -y && useradd -m vscode
 
-# install the packages and dependencies along with jq so we can parse JSON (add additional packages as necessary)
+# install the packages and dependencies (add additional packages as necessary)
 RUN apt-get install -y --no-install-recommends curl nodejs wget unzip vim git jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip
 
 # cd into the user directory, download and unzip the github actions runner
