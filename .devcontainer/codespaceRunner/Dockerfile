@@ -1,5 +1,5 @@
 # base image
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 #input GitHub runner version argument
 ARG RUNNER_VERSION
@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 LABEL Author="Marcel L"
 LABEL Email="pwd9000@hotmail.co.uk"
 LABEL GitHub="https://github.com/Pwd9000-ML"
-LABEL BaseImage="ubuntu:20.04"
+LABEL BaseImage="ubuntu:22.04"
 LABEL RunnerVersion=${RUNNER_VERSION}
 
 # update the base packages + add a non-sudo user
