@@ -1,8 +1,8 @@
 ARG RUNNER_VERSION="2.295.0"
-ARG VARIANT="ubuntu-22.04"
+ARG VARIANT="ubuntu"
 
 # base image
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/base:${VARIANT}
 
 #input GitHub runner version argument
 ENV DEBIAN_FRONTEND=noninteractive
