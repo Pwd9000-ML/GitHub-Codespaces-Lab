@@ -15,13 +15,12 @@ LABEL RunnerVersion=${RUNNER_VERSION}
 RUN apt-get update -y && apt-get upgrade -y
 
 # install the packages and dependencies along with jq so we can parse JSON (add additional packages as necessary)
-RUN apt-get install -y --no-install-recommends \
-    curl nodejs wget unzip vim git jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip
+RUN apt-get install -y --no-install-recommends curl nodejs wget unzip vim git jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip
 
 # cd into the user directory, download and unzip the github actions runner
-RUN cd /home/vscode && mkdir actions-runner && cd actions-runner \
-    && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && tar xvzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
+RUN curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+RUN tar xvzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
 # install some additional dependencies
 RUN chown -R vscode ~vscode && /home/vscode/actions-runner/bin/installdependencies.sh
