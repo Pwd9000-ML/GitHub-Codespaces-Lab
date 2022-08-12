@@ -22,8 +22,8 @@ RUN apt-get install -y --no-install-recommends \
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/vscode && mkdir actions-runner && cd actions-runner \
-    && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && tar xvf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+    && curl -O -L https://github.com/actions/runner/releases/download/v2.295.0/actions-runner-linux-x64-2.295.0.tar.gz \
+    && tar xzvf ./actions-runner-linux-x64-2.295.0.tar.gz
 
 # install some additional dependencies
 RUN chown -R vscode ~vscode && /home/vscode/actions-runner/bin/installdependencies.sh
