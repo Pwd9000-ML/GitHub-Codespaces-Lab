@@ -1,32 +1,24 @@
 # base image
-FROM ubuntu:22.04
+FROM mcr.microsoft.com/vscode/devcontainers/base:bullseye
 
 #input GitHub runner version argument
 ARG RUNNER_VERSION="2.292.0"
-ENV DEBIAN_FRONTEND=noninteractive
-
-LABEL Author="Marcel L"
-LABEL Email="pwd9000@hotmail.co.uk"
-LABEL GitHub="https://github.com/Pwd9000-ML"
-LABEL BaseImage="ubuntu:22.04"
-LABEL RunnerVersion=${RUNNER_VERSION}
-
-# update the base packages + add a non-sudo user
-RUN apt-get update -y && apt-get upgrade -y && useradd -m vscode
-
-# install the packages and dependencies (add additional packages as necessary)
-RUN apt-get install -y --no-install-recommends curl nodejs wget unzip vim git jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
-RUN curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
-RUN tar xvzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive  \
+    && apt-get -y install --no-install-recommends curl ca-certificates \
+    && bash -c "$(curl -fsSL "https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz")" \
+    && tar xvzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # install some additional dependencies
-RUN chown -R vscode ~vscode && /home/vscode/actions-runner/bin/installdependencies.sh
+#RUN chown -R vscode ~vscode && /home/vscode/actions-runner/bin/installdependencies.sh
+RUN /bin/bash /home/vscode/actions-runner/bin/installdependencies.sh
 
 # add over the start.sh script
-ADD scripts/start.sh start.sh
+COPY scripts/start.sh start.sh
 
 # make the script executable
 RUN chmod +x start.sh
