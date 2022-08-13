@@ -17,6 +17,8 @@ cleanup() {
 }
 
 trap 'cleanup; exit 130' INT
+trap 'cleanup; exit 2' INT
 trap 'cleanup; exit 143' TERM
+trap 'cleanup; exit 15' TERM
 
 /home/vscode/actions-runner/run.sh & wait $!
