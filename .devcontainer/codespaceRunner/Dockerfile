@@ -1,11 +1,11 @@
 # base image
 FROM mcr.microsoft.com/vscode/devcontainers/base:bullseye
 
-#input GitHub runner version argument
-ARG RUNNER_VERSION="2.292.0"
-
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
+
+#input GitHub runner version argument
+ARG RUNNER_VERSION="2.292.0"
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive  \
     && apt-get -y install --no-install-recommends curl ca-certificates \
