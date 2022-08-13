@@ -27,12 +27,12 @@
 			"UPGRADE_PACKAGES": "true",
 			"RUNNER_VERSION": "2.295.0"
 		}
-	},
-	"features": {
-		"terraform": "latest",
-		"azure-cli": "latest",
-		"git-lfs": "latest",
-		"github-cli": "latest",
-		"powershell": "latest"
-	}
+	}//,
+//	"features": {
+//		"terraform": "latest",
+//		"azure-cli": "latest",
+//		"git-lfs": "latest",
+//		"github-cli": "latest",
+//		"powershell": "latest"
+//	}
 }
