@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.238.1/containers/azure-cli
 {
-	"name": "Azure CLI",
+	"name": "CodespaceRunner",
 	"dockerFile": "Dockerfile",
 	
 	// Configure tool-specific properties.
@@ -10,7 +10,11 @@
 		"vscode": {		
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"ms-vscode.azurecli"
+				"ms-vscode.azurecli",
+				"ms-vscode.powershell",
+				"hashicorp.terraform",
+				"esbenp.prettier-vscode",
+				"tfsec.tfsec"
 			]
 		}
 	},
@@ -28,7 +32,8 @@
 	"remoteUser": "vscode",
 	"build": {
 		"args": {
-			"UPGRADE_PACKAGES": "true"
+			"UPGRADE_PACKAGES": "true",
+			"RUNNER_VERSION": "2.295.0"
 		}
 	},
 	"features": {
@@ -36,7 +41,6 @@
 		"git": "latest",
 		"git-lfs": "latest",
 		"github-cli": "latest",
-		"azure-cli": "latest",
 		"powershell": "latest"
 	}
 }
