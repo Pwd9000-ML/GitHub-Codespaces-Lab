@@ -21,8 +21,8 @@ RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
 #input GitHub runner version argument
 ARG RUNNER_VERSION="2.292.0"
 
-RUN bash -c "$(curl -fsSL "https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz")"
-RUN tar xvzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+RUN curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+    && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
 # install some additional dependencies
 #RUN chown -R vscode ~vscode && /home/vscode/actions-runner/bin/installdependencies.sh
