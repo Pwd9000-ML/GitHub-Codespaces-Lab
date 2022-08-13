@@ -5,7 +5,7 @@ on:
 
 jobs:
   testRunner:
-    runs-on: [self-hosted, pwd9000]
+    runs-on: [self-hosted, Pwd9000, GitHub-Codespaces-Lab]
     steps:
     - uses: actions/checkout@v3.0.2
     - name: Display Terraform Version
