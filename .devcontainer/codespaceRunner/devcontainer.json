@@ -25,6 +25,7 @@
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
+	// Amend GitHub runner version with 'RUNNER_VERSION'. https://github.com/actions/runner/releases.
 	"build": {
 		"args": {
 			"UPGRADE_PACKAGES": "true",

@@ -24,10 +24,10 @@ RUN cd /home/vscode/actions-runner \
     && tar xzf /home/vscode/actions-runner/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && /home/vscode/actions-runner/bin/installdependencies.sh
 
-# add over the start.sh script
+# copy over the start.sh script
 COPY library-scripts/start.sh /home/vscode/actions-runner/start.sh
 
-# Aply ownership of home folder
+# Apply ownership of home folder
 RUN chown -R vscode ~vscode
 
 # make the script executable
