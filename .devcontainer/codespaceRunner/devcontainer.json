@@ -1,59 +1,5 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.238.1/containers/ubuntu
 {
-	"name": "Codespace Runner",
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'RUNNER_VERSION' with prffered GitHub runner version (https://github.com/actions/runner/releases)
-		"args": { "RUNNER_VERSION": "2.292.0" }
-	},
-
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			//"settings": {},
-			//"devPort": {},
-			// Specify which VS Code extensions to install (List of IDs)
-			"extensions": [
-				"ms-vscode.powershell",
-				"hashicorp.terraform",
-				"esbenp.prettier-vscode",
-				"tfsec.tfsec"
-				]
-			}
-		},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
-
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode",
-	"features": {
-		"common": {
-			"username": "automatic",
-			"uid": "automatic",
-			"gid": "automatic",
-			"installZsh": true,
-			"installOhMyZsh": true,
-			"upgradePackages": true,
-			"nonFreePackages": false
-		},
-		"terraform": "latest",
-		"git-lfs": "latest",
-		"github-cli": "latest",
-		"azure-cli": "latest",
-		"powershell": "7.1"
-	}
-}
-
-
-
-{
-	"name": "Azure CLI",
+	"name": "CodespaceRunner",
 	"dockerFile": "Dockerfile",
 	
 	// Configure tool-specific properties.
@@ -62,7 +8,11 @@
 		"vscode": {		
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"ms-vscode.azurecli"
+				"ms-vscode.azurecli",
+				"ms-vscode.powershell",
+				"hashicorp.terraform",
+				"esbenp.prettier-vscode",
+				"tfsec.tfsec"
 			]
 		}
 	},
@@ -70,12 +20,22 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "az --version",
-
-	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
-	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+	// Use 'postStartCommand' to run commands each time the container is successfully started..
+    "postStartCommand": "/home/vscode/actions-runner/start.sh",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"build": {
+		"args": {
+			"UPGRADE_PACKAGES": "true",
+			"RUNNER_VERSION": "2.295.0"
+		}
+	}//,
+//	"features": {
+//		"terraform": "latest",
+//		"azure-cli": "latest",
+//		"git-lfs": "latest",
+//		"github-cli": "latest",
+//		"powershell": "latest"
+//	}
 }
