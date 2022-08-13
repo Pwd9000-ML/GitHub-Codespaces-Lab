@@ -14,7 +14,7 @@ COPY library-scripts/*.sh /tmp/library-scripts/
 RUN bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true"
 
 # cd into the user directory, download and unzip the github actions runner
-RUN cd /home/vscode && mkdir actions-runner
+RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
 
 #Switch User Root
 #USER ROOT
@@ -22,7 +22,8 @@ RUN cd /home/vscode && mkdir actions-runner
 #input GitHub runner version argument
 ARG RUNNER_VERSION="2.292.0"
 
-RUN curl -oL /home/vscode/actions-runner/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+RUN cd /home/vscode/actions-runner \
+    && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && tar xzf /home/vscode/actions-runner/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && /home/vscode/actions-runner/bin/installdependencies.sh
 
