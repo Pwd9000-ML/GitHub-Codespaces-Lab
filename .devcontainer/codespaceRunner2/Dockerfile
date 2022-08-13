@@ -28,17 +28,17 @@ RUN curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VER
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && ./bin/installdependencies.sh
 
-# install some additional dependencies
-#RUN /bin/bash /home/vscode/actions-runner/bin/installdependencies.sh
-
 # add over the start.sh script
-COPY library-scripts/start.sh start.sh
+COPY library-scripts/start.sh /home/vscode/actions-runner/start.sh
+
+# Aply ownership of home folder
+RUN chown -R vscode ~vscode
 
 # make the script executable
-RUN chmod +x start.sh
+RUN chmod +x /home/vscode/actions-runner/start.sh
 
 # Clean up
-RUN apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
+RUN rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
 #Switch User vscode
 #USER vscode
