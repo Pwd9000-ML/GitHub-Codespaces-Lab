@@ -18,28 +18,30 @@ RUN bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "$
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
 
+#Switch User Root
+#USER ROOT
+
 #input GitHub runner version argument
 ARG RUNNER_VERSION="2.292.0"
 
 RUN curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+    && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+    && ./bin/installdependencies.sh
 
 # install some additional dependencies
-#RUN chown -R vscode ~vscode && /home/vscode/actions-runner/bin/installdependencies.sh
-RUN /bin/bash /home/vscode/actions-runner/bin/installdependencies.sh
+#RUN /bin/bash /home/vscode/actions-runner/bin/installdependencies.sh
 
 # add over the start.sh script
 COPY library-scripts/start.sh start.sh
-# Clean up
-RUN apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
-
 
 # make the script executable
 RUN chmod +x start.sh
 
-# set the user to "vscode" so all subsequent commands are run as the vscode user
-#USER vscode
+# Clean up
+RUN apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
+#Switch User vscode
+#USER vscode
 
 # set the entrypoint to the start.sh script
 ENTRYPOINT ["./start.sh"]
