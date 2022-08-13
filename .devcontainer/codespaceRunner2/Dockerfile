@@ -24,9 +24,9 @@ RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
 #input GitHub runner version argument
 ARG RUNNER_VERSION="2.292.0"
 
-RUN curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && ./bin/installdependencies.sh
+RUN curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz > /home/vscode/actions-runner/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+    && tar xzf /home/vscode/actions-runner/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+    && /home/vscode/actions-runner/bin/installdependencies.sh
 
 # add over the start.sh script
 COPY library-scripts/start.sh /home/vscode/actions-runner/start.sh
@@ -45,4 +45,3 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
 # set the entrypoint to the start.sh script
 ENTRYPOINT ["/home/vscode/actions-runner/start.sh"]
-
