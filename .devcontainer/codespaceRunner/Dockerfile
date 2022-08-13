@@ -7,7 +7,7 @@ RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
 #input GitHub runner version argument
 #ARG RUNNER_VERSION="2.292.0"
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive  \
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends curl ca-certificates \
     && bash -c "$(curl -fsSL "https://github.com/actions/runner/releases/download/v2.295.0/actions-runner-linux-x64-2.295.0.tar.gz")" \
     && tar xvzf ./actions-runner-linux-x64-2.295.0.tar.gz \
