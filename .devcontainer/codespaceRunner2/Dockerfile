@@ -44,5 +44,5 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 #USER vscode
 
 # set the entrypoint to the start.sh script
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["/home/vscode/actions-runner/start.sh"]
 
