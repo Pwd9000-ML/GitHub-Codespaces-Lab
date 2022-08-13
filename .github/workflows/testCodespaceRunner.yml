@@ -1,0 +1,14 @@
+name: Runner on Codespace test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  testRunner:
+    runs-on: [self-hosted, pwd9000]
+    steps:
+    - uses: actions/checkout@v3.0.2
+    - name: Display Terraform Version
+      run: terraform --version
+    - name: Display Azure-CLI Version
+      run: az --version
