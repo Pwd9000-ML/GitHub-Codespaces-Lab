@@ -5,12 +5,12 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:bullseye
 RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
 
 #input GitHub runner version argument
-ARG RUNNER_VERSION="2.292.0"
+#ARG RUNNER_VERSION="2.292.0"
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive  \
     && apt-get -y install --no-install-recommends curl ca-certificates \
-    && bash -c "$(curl -fsSL "https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz")" \
-    && tar xvzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+    && bash -c "$(curl -fsSL "https://github.com/actions/runner/releases/download/v2.295.0/actions-runner-linux-x64-2.295.0.tar.gz")" \
+    && tar xvzf ./actions-runner-linux-x64-2.295.0.tar.gz \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # install some additional dependencies
