@@ -8,10 +8,8 @@ RUN cd /home/vscode && mkdir actions-runner && cd actions-runner
 ARG RUNNER_VERSION="2.292.0"
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update \
-    && bash -c "$(curl -fsSL "https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz")" \
-    && tar xvzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+RUN bash -c "$(curl -fsSL "https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz")"
+RUN tar xvzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
 # install some additional dependencies
 #RUN chown -R vscode ~vscode && /home/vscode/actions-runner/bin/installdependencies.sh
