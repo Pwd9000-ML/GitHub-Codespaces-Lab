@@ -15,7 +15,7 @@ ADO_URL="https://dev.azure.com/${ADO_ORG}"
 --url "${ADO_URL}" \
 --auth PAT \
 --token "${ADO_PAT}" \
---pool "${$ADO_POOL_NAME}" \
+--pool "${ADO_POOL_NAME}" \
 --acceptTeeEula
 
 /home/vscode/azure-pipelines/run.sh
