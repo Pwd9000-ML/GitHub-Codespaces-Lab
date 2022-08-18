@@ -25,11 +25,12 @@
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
-	// Amend GitHub runner version with 'RUNNER_VERSION'. https://github.com/actions/runner/releases.
+	// Amend Azure Pipelines agent version and arch type with 'ARCH' and 'AGENT_VERSION'. https://github.com/microsoft/azure-pipelines-agent/releases.
 	"build": {
 		"args": {
 			"UPGRADE_PACKAGES": "true",
-			"RUNNER_VERSION": "2.295.0"
+			"ARCH": "x64",
+			"AGENT_VERSION": "2.206.1"
 		}
 	},
 	"features": {
