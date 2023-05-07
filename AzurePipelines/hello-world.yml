@@ -15,6 +15,7 @@ steps:
   displayName: 'Run a one-liner script'
 
 - script: |
-    echo This codesace hostname: 
-    Hostname
+    echo This codesace hostname:
+    echo ----------------------- 
+    echo $HOSTNAME
   displayName: 'Run a multi-line script'
