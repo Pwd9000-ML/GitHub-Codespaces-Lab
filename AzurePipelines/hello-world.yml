@@ -15,7 +15,6 @@ steps:
   displayName: 'Run a one-liner script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
     echo This codesace hostname: 
     Hostname
   displayName: 'Run a multi-line script'
